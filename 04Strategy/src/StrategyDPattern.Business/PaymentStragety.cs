@@ -1,29 +1,34 @@
+using StrategyDPattern.Business.Entities;
+using StrategyDPattern.Business.Interfaces;
+
+namespace StrategyDPattern.Business;
+
 public class PaymentStragety
 {
-  private List<Item> items;
+    private List<Item> items;
 
-  public PaymentStragety()
-  {
-    items = new List<Item>();
-  }
-
-  public void AddItem(Item item) => items.Add(item);
-  public double CalculateTotal()
-  {
-    double sum = 0;
-
-    foreach (var item in items)
+    public PaymentStragety()
     {
-      sum += item.Price;
+        items = new List<Item>();
     }
 
-    return sum;
-  }
+    public void AddItem(Item item) => items.Add(item);
+    public double CalculateTotal()
+    {
+        double sum = 0;
 
-  public string Pay(IPayment method)
-  {
-    double total = CalculateTotal();
+        foreach (var item in items)
+        {
+            sum += item.Price ?? 0;
+        }
 
-    return method.Pay(total);
-  }
+        return sum;
+    }
+
+    public string Pay(IPayment method)
+    {
+        double total = CalculateTotal();
+
+        return method.Pay(total);
+    }
 }
