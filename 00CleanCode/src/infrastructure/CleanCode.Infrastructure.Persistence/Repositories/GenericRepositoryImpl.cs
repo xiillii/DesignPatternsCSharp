@@ -1,10 +1,11 @@
 ﻿using CleanCode.Core.Application.Contracts.Persistence;
+using CleanCode.Core.Domain.Common;
 using CleanCode.Infrastructure.Persistence.DatabaseContext;
 using Microsoft.EntityFrameworkCore;
 
 namespace CleanCode.Infrastructure.Persistence.Repositories;
 
-public class GenericRepositoryImpl<T> : IGenericRepository<T> where T : class
+public class GenericRepositoryImpl<T> : IGenericRepository<T> where T : BaseEntity
 {
     protected readonly DatabaseContextImpl _context;
 
@@ -28,10 +29,11 @@ public class GenericRepositoryImpl<T> : IGenericRepository<T> where T : class
     }
 
     public async Task<IReadOnlyList<T>> GetAsync() 
-        => await _context.Set<T>().ToListAsync();
+        => await _context.Set<T>().AsNoTracking().ToListAsync();
 
-    public async Task<T?> GetByIdAsync(int id) 
-        => await _context.Set<T>().FindAsync(id);
+    public async Task<T?> GetByIdAsync(int id)
+        => await _context.Set<T>().AsNoTracking()
+                        .FirstOrDefaultAsync(q => q.Id == id);
 
     public async Task UpdateAsync(T entity)
     {
