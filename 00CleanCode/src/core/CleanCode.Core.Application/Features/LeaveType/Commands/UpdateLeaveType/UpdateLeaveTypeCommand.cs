@@ -1,8 +1,8 @@
 ﻿using MediatR;
 
-namespace CleanCode.Core.Application.Features.LeaveType.Commands.CreateLeaveType;
+namespace CleanCode.Core.Application.Features.LeaveType.Commands.UpdateLeaveType;
 
-public class UpdateLeaveTypeCommand : IRequest<int>
+public class UpdateLeaveTypeCommand : IRequest<Unit>
 {
     public string Name { get; set; } = string.Empty;
     public int DefaultDays { get; set; }

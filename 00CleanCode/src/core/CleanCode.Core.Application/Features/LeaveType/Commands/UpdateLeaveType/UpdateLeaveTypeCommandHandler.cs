@@ -1,9 +1,8 @@
 ﻿using AutoMapper;
 using CleanCode.Core.Application.Contracts.Persistence;
-using CleanCode.Core.Domain;
 using MediatR;
 
-namespace CleanCode.Core.Application.Features.LeaveType.Commands.CreateLeaveType;
+namespace CleanCode.Core.Application.Features.LeaveType.Commands.UpdateLeaveType;
 
 public class UpdateLeaveTypeCommandHandler : IRequestHandler<UpdateLeaveTypeCommand, Unit>
 {
