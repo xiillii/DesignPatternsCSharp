@@ -1,4 +1,6 @@
-﻿using CleanCode.Infrastructure.Persistence.DatabaseContext;
+﻿using CleanCode.Core.Application.Contracts.Persistence;
+using CleanCode.Infrastructure.Persistence.DatabaseContext;
+using CleanCode.Infrastructure.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,6 +16,8 @@ public static class PersistenceServiceRegistration
         {
             opts.UseSqlServer(configuration.GetConnectionString("ConnectionString"));
         });
+
+        services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepositoryImpl<>));
 
         return services;
     }

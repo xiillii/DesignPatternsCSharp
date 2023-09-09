@@ -1,31 +1,43 @@
 ﻿using CleanCode.Core.Application.Contracts.Persistence;
+using CleanCode.Infrastructure.Persistence.DatabaseContext;
+using Microsoft.EntityFrameworkCore;
 
 namespace CleanCode.Infrastructure.Persistence.Repositories;
 
 public class GenericRepositoryImpl<T> : IGenericRepository<T> where T : class
 {
-    public Task<T> CreateAsync(T entity)
+    protected readonly DatabaseContextImpl _context;
+
+    public GenericRepositoryImpl(DatabaseContextImpl context)
     {
-        throw new NotImplementedException();
+        _context = context;
     }
 
-    public Task<T> DeleteAsync(T entity)
+
+
+    public async Task CreateAsync(T entity)
     {
-        throw new NotImplementedException();
+        await _context.AddAsync(entity);
+        await _context.SaveChangesAsync();
     }
 
-    public Task<List<T>> GetAsync()
+    public async Task DeleteAsync(T entity)
     {
-        throw new NotImplementedException();
+        _context.Remove(entity);
+        await _context.SaveChangesAsync();
     }
 
-    public Task<T> GetByIdAsync(int id)
+    public async Task<IReadOnlyList<T>> GetAsync() 
+        => await _context.Set<T>().ToListAsync();
+
+    public async Task<T?> GetByIdAsync(int id) 
+        => await _context.Set<T>().FindAsync(id);
+
+    public async Task UpdateAsync(T entity)
     {
-        throw new NotImplementedException();
+        
+        _context.Entry(entity).State = EntityState.Modified; ;
+        await _context.SaveChangesAsync();
     }
 
-    public Task<T> UpdateAsync(T entity)
-    {
-        throw new NotImplementedException();
-    }
 }
