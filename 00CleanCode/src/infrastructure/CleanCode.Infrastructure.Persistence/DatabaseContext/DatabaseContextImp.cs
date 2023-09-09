@@ -16,17 +16,7 @@ public class DatabaseContextImp : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.ApplyConfigurationsFromAssembly(typeof(DatabaseContextImp).Assembly);
-
-        modelBuilder.Entity<LeaveType>().HasData(
-            new LeaveType
-            {
-                Id = 1,
-                Name = "Vacation",
-                DefaultDays = 10,
-                DateCreated = DateTime.Now,
-                DateModified = DateTime.Now,
-            });
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(DatabaseContextImp).Assembly);        
 
         base.OnModelCreating(modelBuilder);
     }

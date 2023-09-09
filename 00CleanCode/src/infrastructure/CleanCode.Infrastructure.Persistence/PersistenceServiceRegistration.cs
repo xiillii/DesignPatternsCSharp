@@ -1,11 +1,19 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using CleanCode.Infrastructure.Persistence.DatabaseContext;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace CleanCode.Infrastructure.Persistence;
 
 public static class PersistenceServiceRegistration
 {
-    public static IServiceCollection AddPersistenceServices(this IServiceCollection services)
+    public static IServiceCollection AddPersistenceServices(this IServiceCollection services,
+        IConfiguration configuration)
     {
+        services.AddDbContext<DatabaseContextImp>(opts =>
+        {
+            opts.UseSqlServer(configuration.GetConnectionString("ConnectionString"));
+        });
 
         return services;
     }
