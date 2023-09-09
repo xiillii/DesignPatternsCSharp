@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using CleanCode.Core.Application.Contracts.Persistence;
+using CleanCode.Core.Application.Exceptions;
 using MediatR;
 
 namespace CleanCode.Core.Application.Features.LeaveType.Queries.GetLeaveTypeDetails;
@@ -20,7 +21,10 @@ public class GetLeaveTypeDetailsQueryHandler
                                                   CancellationToken cancellationToken)
     {
         // query database
-        var leaveTypes = await _repository.GetByIdAsync(request.Id);
+        var leaveTypes = await _repository
+            .GetByIdAsync(request.Id) ?? 
+                throw new NotFoundException(nameof(Domain.LeaveType)
+                    , request.Id);
 
         // convert data object to DTO object
         var data = _mapper.Map<LeaveTypeDetailsDto>(leaveTypes);

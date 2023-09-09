@@ -1,4 +1,5 @@
 ﻿using CleanCode.Core.Application.Contracts.Persistence;
+using CleanCode.Core.Application.Exceptions;
 using MediatR;
 
 namespace CleanCode.Core.Application.Features.LeaveType.Commands.DeleteLeaveType;
@@ -19,10 +20,11 @@ public class DeleteLeaveTypeCommandHandler : IRequestHandler<DeleteLeaveTypeComm
         , CancellationToken cancellationToken)
     {
         // Get the object from database
-        var leaveTypeToDelete = await _repository.GetByIdAsync(request.Id);
+        var leaveTypeToDelete = await _repository
+            .GetByIdAsync(request.Id) ?? 
+                throw new NotFoundException(nameof(Domain.LeaveType)
+                    , request.Id);
 
-        // convert to domain entity object
-        
 
         // delete from database
         await _repository.DeleteAsync(leaveTypeToDelete);
