@@ -9,6 +9,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "core", "core", "{2323FFE0-F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanCode.Core.Domain", "src\core\CleanCode.Core.Domain\CleanCode.Core.Domain.csproj", "{F7C4E803-4D5E-4DCF-8A5C-24EE18E992EB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanCode.Core.Application", "src\core\CleanCode.Core.Application\CleanCode.Core.Application.csproj", "{38B0082B-B766-450C-A4DE-B4C581C245DF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,9 +24,14 @@ Global
 		{F7C4E803-4D5E-4DCF-8A5C-24EE18E992EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F7C4E803-4D5E-4DCF-8A5C-24EE18E992EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F7C4E803-4D5E-4DCF-8A5C-24EE18E992EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38B0082B-B766-450C-A4DE-B4C581C245DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38B0082B-B766-450C-A4DE-B4C581C245DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38B0082B-B766-450C-A4DE-B4C581C245DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38B0082B-B766-450C-A4DE-B4C581C245DF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{2323FFE0-F4FC-497F-92DE-E991FACABCD9} = {C9EA29ED-5AD7-49C8-9E8C-8ED95B9FAC0C}
 		{F7C4E803-4D5E-4DCF-8A5C-24EE18E992EB} = {2323FFE0-F4FC-497F-92DE-E991FACABCD9}
+		{38B0082B-B766-450C-A4DE-B4C581C245DF} = {2323FFE0-F4FC-497F-92DE-E991FACABCD9}
 	EndGlobalSection
 EndGlobal
