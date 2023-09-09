@@ -10,7 +10,7 @@ public static class PersistenceServiceRegistration
     public static IServiceCollection AddPersistenceServices(this IServiceCollection services,
         IConfiguration configuration)
     {
-        services.AddDbContext<DatabaseContextImp>(opts =>
+        services.AddDbContext<DatabaseContextImpl>(opts =>
         {
             opts.UseSqlServer(configuration.GetConnectionString("ConnectionString"));
         });

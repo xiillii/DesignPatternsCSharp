@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CleanCode.Infrastructure.Persistence.DatabaseContext;
 
-public class DatabaseContextImp : DbContext
+public class DatabaseContextImpl : DbContext
 {
-    public DatabaseContextImp(DbContextOptions<DatabaseContextImp> options) : base(options)
+    public DatabaseContextImpl(DbContextOptions<DatabaseContextImpl> options) : base(options)
     {
     }
 
@@ -16,7 +16,7 @@ public class DatabaseContextImp : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.ApplyConfigurationsFromAssembly(typeof(DatabaseContextImp).Assembly);        
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(DatabaseContextImpl).Assembly);        
 
         base.OnModelCreating(modelBuilder);
     }
