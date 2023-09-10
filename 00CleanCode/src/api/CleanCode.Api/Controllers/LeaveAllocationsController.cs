@@ -1,4 +1,8 @@
-﻿using CleanCode.Core.Application.Features.LeaveAllocation.Queries.GetAllLeaveAllocations;
+﻿using CleanCode.Core.Application.Features.LeaveAllocation.Commads.CreateLeaveAllocation;
+using CleanCode.Core.Application.Features.LeaveAllocation.Commads.DeleteLeaveAllocation;
+using CleanCode.Core.Application.Features.LeaveAllocation.Commads.UpdateLeaveAllocation;
+using CleanCode.Core.Application.Features.LeaveAllocation.Queries.GetAllLeaveAllocations;
+using CleanCode.Core.Application.Features.LeaveAllocation.Queries.GetLeaveAllocationDetails;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -28,27 +32,49 @@ namespace CleanCode.Api.Controllers
 
         // GET api/<LeaveAllocationsController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<ActionResult<LeaveAllocationDetailsDto>> Get(int id)
         {
-            return "value";
+            var lAllocation = await _mediator.Send(new GetLeaveAllocationDetailsQuery(id)); 
+
+            return Ok(lAllocation);
         }
 
         // POST api/<LeaveAllocationsController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult> Post(CreateLeaveAllocationCommand leaveAllocation)
         {
+            var response = await _mediator.Send(leaveAllocation);
+
+            return CreatedAtAction(nameof(Get), new { id = response });
         }
 
         // PUT api/<LeaveAllocationsController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesDefaultResponseType]
+        public async Task<ActionResult> Put(UpdateLeaveAllocationCommand leaveAllocation)
         {
+            await _mediator.Send(leaveAllocation);
+
+            return NoContent();
         }
 
         // DELETE api/<LeaveAllocationsController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesDefaultResponseType]
+        public async Task<ActionResult> Delete(int id)
         {
+            var command = new DeleteLeaveAllocationCommand { Id = id };
+            await _mediator.Send(command);  
+
+            return NoContent();
         }
     }
 }
