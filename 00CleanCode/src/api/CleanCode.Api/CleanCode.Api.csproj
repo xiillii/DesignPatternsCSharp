@@ -4,10 +4,17 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>45118573-aab4-4378-9f48-a652a8cd8d18</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\core\CleanCode.Core.Application\CleanCode.Core.Application.csproj" />
+    <ProjectReference Include="..\..\infrastructure\CleanCode.Infrastructure.Persistence\CleanCode.Infrastructure.Persistence.csproj" />
+    <ProjectReference Include="..\..\infrastructure\CleanCode.Infrastructure\CleanCode.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
