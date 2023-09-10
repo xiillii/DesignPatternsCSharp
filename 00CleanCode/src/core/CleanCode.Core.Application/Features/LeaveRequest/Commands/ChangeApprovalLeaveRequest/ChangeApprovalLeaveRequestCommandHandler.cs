@@ -65,7 +65,7 @@ public class ChangeApprovalLeaveRequestCommandHandler
             var email = new EmailMessage
             {
                 To = string.Empty, // TODO: get email from employee record
-                Body = $"The approval status for your leave request for {request.StartDate:D} to {request.EndDate:D} " +
+                Body = $"The approval status for your leave request for {lRequest.StartDate:D} to {lRequest.EndDate:D} " +
                         $"has been updated.",
                 Subject = "Leave Request Approval Status Updated",
             };
