@@ -16,4 +16,6 @@ public class LeaveTypeProfile : Profile
         CreateMap<CreateLeaveTypeCommand, LeaveType>();
         CreateMap<UpdateLeaveTypeCommand, LeaveType>();
     }
+
+    
 }
