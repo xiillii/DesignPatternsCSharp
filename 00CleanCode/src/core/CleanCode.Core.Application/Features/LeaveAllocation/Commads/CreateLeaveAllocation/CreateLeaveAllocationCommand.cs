@@ -2,7 +2,7 @@
 
 namespace CleanCode.Core.Application.Features.LeaveAllocation.Commads.CreateLeaveAllocation;
 
-public class CreateLeaveAllocationCommand : IRequest<Unit>
+public class CreateLeaveAllocationCommand : IRequest<int>
 {
     public int LeaveTypeId { get; set; }
 }

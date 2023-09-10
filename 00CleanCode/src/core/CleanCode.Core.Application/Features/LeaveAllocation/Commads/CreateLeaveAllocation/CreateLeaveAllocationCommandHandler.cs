@@ -7,7 +7,7 @@ using MediatR;
 namespace CleanCode.Core.Application.Features.LeaveAllocation.Commads.CreateLeaveAllocation;
 
 public class CreateLeaveAllocationCommandHandler
-    : IRequestHandler<CreateLeaveAllocationCommand, Unit>
+    : IRequestHandler<CreateLeaveAllocationCommand, int>
 {
     private readonly IMapper _mapper;
     private readonly ILeaveAllocationRepository _leaveAllocationRepository;
@@ -25,7 +25,7 @@ public class CreateLeaveAllocationCommandHandler
         _logger = logger;
     }
 
-    public async Task<Unit> Handle(CreateLeaveAllocationCommand request, CancellationToken cancellationToken)
+    public async Task<int> Handle(CreateLeaveAllocationCommand request, CancellationToken cancellationToken)
     {
         // validate incoming data
         var validator = new CreateLeaveAllocationCommandValidator(_leaveAllocationRepository);
@@ -52,6 +52,6 @@ public class CreateLeaveAllocationCommandHandler
         await _leaveAllocationRepository.CreateAsync(leaveAllocationToCreate);
 
         // return
-        return Unit.Value;
+        return leaveAllocationToCreate.Id;
     }
 }
