@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using CleanCode.Core.Application.Features.LeaveAllocation.Commads.CreateLeaveAllocation;
 using CleanCode.Core.Application.Features.LeaveAllocation.Queries.GetAllLeaveAllocations;
 using CleanCode.Core.Application.Features.LeaveAllocation.Queries.GetLeaveAllocationDetails;
 using CleanCode.Core.Domain;
@@ -11,6 +12,6 @@ public class LeaveAllocationProfile : Profile
     {
         CreateMap<LeaveAllocationDto, LeaveAllocation>().ReverseMap();
         CreateMap<LeaveAllocation, LeaveAllocationDetailsDto>();
-
+        CreateMap<CreateLeaveAllocationCommand, LeaveAllocation>();
     }
 }
