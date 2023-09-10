@@ -18,4 +18,8 @@
     <ProjectReference Include="..\CleanCode.Core.Domain\CleanCode.Core.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\LeaveAllocation\Commads\DeleteLeaveAllocation\" />
+  </ItemGroup>
+
 </Project>

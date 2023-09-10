@@ -31,7 +31,7 @@ public class CreateLeaveTypeCommandHandler : IRequestHandler<CreateLeaveTypeComm
         if (validationResult.Errors.Any())
         {
             _logger.LogWarning("Validation error in create request for {0} - {1}",
-                nameof(LeaveType), request.Name);
+                nameof(Domain.LeaveType), request.Name);
             throw new BadRequestException("Invalid LeaveType", validationResult);
         }
 

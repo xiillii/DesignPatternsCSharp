@@ -37,7 +37,7 @@ public class UpdateLeaveAllocationCommandHandler
         if (validationResult.Errors.Any())
         {
             _logger.LogWarning("Validation error in update request for {0} - {1}",
-                nameof(LeaveType), request.Id);
+                nameof(Domain.LeaveType), request.Id);
             throw new BadRequestException("Invalid LeaveAllocation", validationResult);
         }
 
