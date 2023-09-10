@@ -19,11 +19,11 @@ namespace CleanCode.Api.Controllers
 
         // GET: api/<LeaveAllocationsController>
         [HttpGet]
-        public async Task<List<LeaveAllocationDto>> Get()
+        public async Task<ActionResult<List<LeaveAllocationDto>>> Get()
         {
             var lAllocations = await _mediator.Send(new GetLeaveAllocationsQuery());
 
-            return lAllocations;
+            return Ok(lAllocations);
         }
 
         // GET api/<LeaveAllocationsController>/5
