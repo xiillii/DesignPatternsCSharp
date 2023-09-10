@@ -2,7 +2,6 @@
 using CleanCode.Core.Application.Contracts.Logging;
 using CleanCode.Core.Application.Contracts.Persistence;
 using CleanCode.Core.Application.Exceptions;
-using CleanCode.Core.Application.Features.LeaveType.Queries.GetLeaveTypeDetails;
 using MediatR;
 
 namespace CleanCode.Core.Application.Features.LeaveRequest.Queries.GetLeaveRequestDetails;
