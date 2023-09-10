@@ -38,7 +38,7 @@ public class UpdateLeaveTypeCommandHandler : IRequestHandler<UpdateLeaveTypeComm
         var leaveTypeToUpdate = _mapper.Map<Domain.LeaveType>(request);
 
         // add to database
-        await _repository.CreateAsync(leaveTypeToUpdate);
+        await _repository.UpdateAsync(leaveTypeToUpdate);
 
         // return Unit value
         return Unit.Value;
