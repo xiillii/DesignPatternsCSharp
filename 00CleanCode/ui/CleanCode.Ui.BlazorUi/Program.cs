@@ -4,6 +4,7 @@ using CleanCode.Ui.BlazorUi.Services;
 using CleanCode.Ui.BlazorUi.Services.Base;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using System.Reflection;
 
 const string API_URI = @"https://localhost:7069";
 
@@ -17,5 +18,7 @@ builder.Services.AddHttpClient<IClient, Client>(client =>
 builder.Services.AddScoped<ILeaveTypeService, LeaveTypeService>();
 builder.Services.AddScoped<ILeaveRequestService, LeaveRequestService>();
 builder.Services.AddScoped<ILeaveAllocationService, LeaveAllocationService>();
+
+builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 await builder.Build().RunAsync();
