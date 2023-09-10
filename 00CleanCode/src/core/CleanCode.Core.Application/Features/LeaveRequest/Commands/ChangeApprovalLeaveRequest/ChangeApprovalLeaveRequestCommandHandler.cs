@@ -3,8 +3,6 @@ using CleanCode.Core.Application.Contracts.Email;
 using CleanCode.Core.Application.Contracts.Logging;
 using CleanCode.Core.Application.Contracts.Persistence;
 using CleanCode.Core.Application.Exceptions;
-using CleanCode.Core.Application.Features.LeaveRequest.Commands.UpdateLeaveRequest;
-using CleanCode.Core.Application.Features.LeaveType.Commands.UpdateLeaveType;
 using CleanCode.Core.Application.Models.Email;
 using MediatR;
 
