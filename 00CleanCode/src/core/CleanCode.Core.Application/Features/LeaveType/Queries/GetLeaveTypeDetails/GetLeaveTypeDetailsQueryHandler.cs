@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using CleanCode.Core.Application.Contracts.Logging;
 using CleanCode.Core.Application.Contracts.Persistence;
 using CleanCode.Core.Application.Exceptions;
 using MediatR;
@@ -10,11 +11,15 @@ public class GetLeaveTypeDetailsQueryHandler
 {
     private readonly IMapper _mapper;
     private readonly ILeaveTypeRepository _repository;
+    private readonly IAppLogger<GetLeaveTypeDetailsQueryHandler> _logger;
 
-    public GetLeaveTypeDetailsQueryHandler(IMapper mapper, ILeaveTypeRepository repository)
+    public GetLeaveTypeDetailsQueryHandler(IMapper mapper, 
+        ILeaveTypeRepository repository,
+        IAppLogger<GetLeaveTypeDetailsQueryHandler> logger)
     {
-        this._mapper = mapper;
-        this._repository = repository;
+        _mapper = mapper;
+        _repository = repository;
+        _logger = logger;
     }
 
     public async Task<LeaveTypeDetailsDto> Handle(GetLeaveTypeDetailsQuery request,
@@ -28,6 +33,8 @@ public class GetLeaveTypeDetailsQueryHandler
 
         // convert data object to DTO object
         var data = _mapper.Map<LeaveTypeDetailsDto>(leaveTypes);
+
+        _logger.LogInformation("Leave types details were retrieved successfully");
 
         // return DTO object
         return data;

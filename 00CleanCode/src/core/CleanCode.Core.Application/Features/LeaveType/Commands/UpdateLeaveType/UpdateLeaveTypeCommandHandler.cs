@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using CleanCode.Core.Application.Contracts.Logging;
 using CleanCode.Core.Application.Contracts.Persistence;
 using CleanCode.Core.Application.Exceptions;
 using MediatR;
@@ -9,12 +10,15 @@ public class UpdateLeaveTypeCommandHandler : IRequestHandler<UpdateLeaveTypeComm
 {
     private readonly IMapper _mapper;
     private readonly ILeaveTypeRepository _repository;
+    private readonly IAppLogger<UpdateLeaveTypeCommandHandler> _logger;
 
     public UpdateLeaveTypeCommandHandler(IMapper mapper,
-        ILeaveTypeRepository leaveTypeRepository)
+        ILeaveTypeRepository leaveTypeRepository,
+        IAppLogger<UpdateLeaveTypeCommandHandler> logger)
     {
         _mapper = mapper;
         _repository = leaveTypeRepository;
+        _logger = logger;
     }
 
     public async Task<Unit> Handle(UpdateLeaveTypeCommand request
@@ -26,6 +30,8 @@ public class UpdateLeaveTypeCommandHandler : IRequestHandler<UpdateLeaveTypeComm
 
         if (validationResult.Errors.Any())
         {
+            _logger.LogWarning("Validation error in update request for {0} - {1}", 
+                nameof(LeaveType), request.Id);
             throw new BadRequestException("Invalid LeaveType", validationResult);
         }
         // convert to domain entity object

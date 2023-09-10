@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using CleanCode.Core.Application.Contracts.Logging;
 using CleanCode.Core.Application.Contracts.Persistence;
 using CleanCode.Core.Application.Exceptions;
 using MediatR;
@@ -9,12 +10,15 @@ public class CreateLeaveTypeCommandHandler : IRequestHandler<CreateLeaveTypeComm
 {
     private readonly IMapper _mapper;
     private readonly ILeaveTypeRepository _repository;
+    private readonly IAppLogger<CreateLeaveTypeCommandHandler> _logger;
 
     public CreateLeaveTypeCommandHandler(IMapper mapper,
-        ILeaveTypeRepository leaveTypeRepository)
+        ILeaveTypeRepository leaveTypeRepository,
+        IAppLogger<CreateLeaveTypeCommandHandler> logger)
     {
         _mapper = mapper;
         _repository = leaveTypeRepository;
+        _logger = logger;
     }
 
     public async Task<int> Handle(CreateLeaveTypeCommand request
@@ -26,6 +30,8 @@ public class CreateLeaveTypeCommandHandler : IRequestHandler<CreateLeaveTypeComm
 
         if (validationResult.Errors.Any())
         {
+            _logger.LogWarning("Validation error in create request for {0} - {1}",
+                nameof(LeaveType), request.Name);
             throw new BadRequestException("Invalid LeaveType", validationResult);
         }
 
