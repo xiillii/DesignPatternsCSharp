@@ -23,4 +23,14 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\LeaveAllocations\" />
+    <Folder Include="Features\LeaveRequests\" />
+    <Folder Include="Features\LeaveTypes\Commands\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\core\CleanCode.Core.Application\CleanCode.Core.Application.csproj" />
+  </ItemGroup>
+
 </Project>

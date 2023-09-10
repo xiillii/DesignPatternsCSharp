@@ -2,11 +2,11 @@
 using CleanCode.Core.Domain;
 using Moq;
 
-namespace CleanCode.UnitTests.Mocks;
+namespace CleanCode.Application.UnitTests.Mocks;
 
 public class MockLeaveTypeRepository
 {
-    public static Mock<ILeaveTypeRepository> GetLeaveTypeMockLeaveTypeRepository()
+    public static Mock<ILeaveTypeRepository> GetMockLeaveTypeRepository()
     {
         var leaveTypes = new List<LeaveType>
         {
