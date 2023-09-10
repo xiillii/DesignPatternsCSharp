@@ -1,3 +1,4 @@
+using CleanCode.Api.Middleware;
 using CleanCode.Core.Application;
 using CleanCode.Infrastructure;
 using CleanCode.Infrastructure.Persistence;
@@ -23,6 +24,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+app.UseMiddleware<ExceptionMiddleware>();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
