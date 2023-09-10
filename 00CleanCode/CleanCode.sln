@@ -25,7 +25,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{96D7BE37-0
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanCode.Application.UnitTests", "test\CleanCode.UnitTests\CleanCode.Application.UnitTests.csproj", "{54A5999D-7C1F-45D8-98AB-AF309AFE9322}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanCode.Persistence.IntegrationTests", "test\CleanCode.Persistence.IntegrationTests\CleanCode.Persistence.IntegrationTests.csproj", "{4F8BF702-6DF8-48F4-A341-05DC30AC7035}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanCode.Persistence.IntegrationTests", "test\CleanCode.Persistence.IntegrationTests\CleanCode.Persistence.IntegrationTests.csproj", "{4F8BF702-6DF8-48F4-A341-05DC30AC7035}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ui", "ui", "{C0D83DC4-DF79-4A5F-AC1A-7E6B876DA17B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanCode.Ui.BlazorUi", "ui\CleanCode.Ui.BlazorUi\CleanCode.Ui.BlazorUi.csproj", "{08EB6BBA-A171-4A0E-B507-979805464ADD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,6 +65,10 @@ Global
 		{4F8BF702-6DF8-48F4-A341-05DC30AC7035}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F8BF702-6DF8-48F4-A341-05DC30AC7035}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F8BF702-6DF8-48F4-A341-05DC30AC7035}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08EB6BBA-A171-4A0E-B507-979805464ADD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08EB6BBA-A171-4A0E-B507-979805464ADD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08EB6BBA-A171-4A0E-B507-979805464ADD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08EB6BBA-A171-4A0E-B507-979805464ADD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -76,5 +84,6 @@ Global
 		{8E88945F-37EB-423D-B644-173751509238} = {6296E836-97CA-4C75-BD3F-CF5B1441123F}
 		{54A5999D-7C1F-45D8-98AB-AF309AFE9322} = {96D7BE37-0081-43C5-8D82-51E82E948F8B}
 		{4F8BF702-6DF8-48F4-A341-05DC30AC7035} = {96D7BE37-0081-43C5-8D82-51E82E948F8B}
+		{08EB6BBA-A171-4A0E-B507-979805464ADD} = {C0D83DC4-DF79-4A5F-AC1A-7E6B876DA17B}
 	EndGlobalSection
 EndGlobal
